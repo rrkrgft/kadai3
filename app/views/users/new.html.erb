@@ -1,5 +1,16 @@
 <h1>新規登録</h1>
 
+<% if @user.errors.any? %>
+  <div id="error_expanation">
+    <h2><%= pluralize(@user.errors.count,"error") %> prohibited this <%= @user.name %> from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with(model: @user, local: true) do |f| %>
   <div class="form-group mt-3">
     <%= f.label :name %>

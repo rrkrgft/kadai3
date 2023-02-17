@@ -1,2 +1,7 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %>のページ</h1>
+
+<p><%= image_tag(@user.image.url) if @user.image && @user.image.url %></p>
+<%= link_to "画像の登録", edit_user_path, class: "btn btn-primary" %>
+
+<p>メールアドレス：　<%= @user.email %></p>
+<p>image：　<%= @user.image %></p>
