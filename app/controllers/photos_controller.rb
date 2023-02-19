@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+
   def new
     @photo = Photo.new
   end
@@ -8,7 +10,7 @@ class PhotosController < ApplicationController
     if @photo.save
       redirect_to photos_path, notice: "登録しました"
     else
-      render :new
+      render :new, notice: "登録エラーです"
     end
   end
 
@@ -22,10 +24,26 @@ class PhotosController < ApplicationController
   def edit
   end
 
-  private
+  def update
+    if @photo.update
+      redirect_to photos_path, notice: "編集しました"
+    else
+      render :edit, notice: "編集エラーです"
+    end
+  end
 
+  def destroy
+    @photo.destroy
+    redirect_to photos_path, notice: "投稿を削除しました"
+  end
+
+  private
   def photo_params
     params.require(:photo).permit(:image, :text, :image_cache )
+  end
+
+  def set_photo
+    @photo = Photo.find(params[:id])
   end
 
 end

@@ -1,2 +1,30 @@
-<h1>Photos#show</h1>
-<p>Find me in app/views/photos/show.html.erb</p>
+<h1>詳細確認</h1>
+
+<table class="table table-hover">
+  <tbody>
+    <tr>
+      <th>画像</th>
+      <td><%= image_tag(@photo.image.url) %>
+    </tr>
+    <tr>
+      <th>テキスト</th>
+      <td><%= @photo.text %>
+    </tr>
+    <tr>
+      <th>投稿日時</th>
+      <td><%= @photo.created_at %>
+    </tr>
+    <tr>
+      <th>更新日時</th>
+      <td><%= @photo.updated_at %>
+    </tr>
+    <tr>
+      <th>投稿者</th>
+      <td><%= @photo.user.name %>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "編集", edit_photo_path(@photo.id), class: "btn btn-secondary" %>
+<%= link_to "削除", photo_path(@photo.id), method: :delete ,data: { confirm: '本当に削除していいですか'}, class: "btn btn-danger mx-3" %>
+
+
