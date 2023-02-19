@@ -13,8 +13,10 @@
       <th><%= link_to image_tag(p.image.url), photo_path(p.id) %></th>
       <th><%= link_to p.text, photo_path(p.id) %></th>
       <th><%= p.user.name %></th>
-      <th><%= link_to "編集", edit_photo_path(p.id), class: "btn btn-secondary" %>
-      <%= link_to "削除", photo_path(p.id), method: :delete ,data: { confirm: '本当に削除していいですか'}, class: "btn btn-danger mx-3" %></th>
+      <% if current_user.id == p.user.id %>
+        <th><%= link_to "編集", edit_photo_path(p.id), class: "btn btn-secondary" %>
+        <%= link_to "削除", photo_path(p.id), method: :delete ,data: { confirm: '本当に削除していいですか'}, class: "btn btn-danger mx-2" %></th>
+      <% end %>
     </tr>
     <% end %>
   </table>

@@ -24,7 +24,8 @@
     </tr>
   </tbody>
 </table>
-<%= link_to "編集", edit_photo_path(@photo.id), class: "btn btn-secondary" %>
-<%= link_to "削除", photo_path(@photo.id), method: :delete ,data: { confirm: '本当に削除していいですか'}, class: "btn btn-danger mx-3" %>
-
+<% if current_user.id == @photo.user.id %>
+  <%= link_to "編集", edit_photo_path(@photo.id), class: "btn btn-secondary" %>
+  <%= link_to "削除", photo_path(@photo.id), method: :delete ,data: { confirm: '本当に削除していいですか'}, class: "btn btn-danger mx-3" %>
+<% end %>
 

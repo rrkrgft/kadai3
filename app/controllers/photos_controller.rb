@@ -25,10 +25,14 @@ class PhotosController < ApplicationController
   end
 
   def update
-    if @photo.update
-      redirect_to photos_path, notice: "編集しました"
+    if current_user.id == @photo.user.id
+      if @photo.update
+        redirect_to photos_path, notice: "編集しました"
+      else
+        render :edit, notice: "編集エラーです"
+      end
     else
-      render :edit, notice: "編集エラーです"
+      redirect_to photos_path
     end
   end
 

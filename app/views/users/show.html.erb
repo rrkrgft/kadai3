@@ -1,7 +1,8 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p><%= image_tag(@user.image.url) if @user.image && @user.image.url %></p>
-<%= link_to "画像の登録", edit_user_path, class: "btn btn-primary" %>
 
+<% if current_user.id == @user.id %>
+  <%= link_to "画像の登録", edit_user_path, class: "btn btn-primary" %>
+<% end %>
 <p>メールアドレス：　<%= @user.email %></p>
-<p>image：　<%= @user.image %></p>
