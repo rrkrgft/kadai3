@@ -21,10 +21,6 @@ module Kadai3
 
     config.i18n.default_locale = :ja
 
-    config.generators do |g|
-      g.assets false
-      g.helper false
-    end
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
