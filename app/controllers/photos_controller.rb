@@ -8,6 +8,7 @@ class PhotosController < ApplicationController
   def create
     @photo = current_user.photos.build(photo_params)
     if @photo.save
+      PostMailer.post_mail(@photo).deliver
       redirect_to photos_path, notice: "登録しました"
     else
       render :new, notice: "登録エラーです"
