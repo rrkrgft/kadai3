@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = user.id
+      session[:user_id] = @user.id
       redirect_to user_path(@user.id), notice: "登録しました"
     else
       render :new
@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    redirect_to user_path(@user.id) unless current_user.id == @user.id
   end
 
   def update

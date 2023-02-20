@@ -23,6 +23,7 @@ class PhotosController < ApplicationController
   end
 
   def edit
+    redirect_to photo_path(@photo.id) unless current_user.id == @photo.user.id
   end
 
   def update
