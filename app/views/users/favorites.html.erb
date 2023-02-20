@@ -1,0 +1,17 @@
+<h1>お気に入り一覧</h2>
+
+<% if @favorite_list.present? %>
+  <table>
+    <tr>
+      <td>画像</td>
+      <td>テキスト</td>
+    </tr>
+    <% @favorite_list.each do |p| %>
+    <tr>
+      <tH><%= image_tag(p.image.url) %></th>
+      <th><%= p.text %></th>
+    <% end %>
+  </table>
+<% else %>
+  <p>お気に入り一覧はありません</p>
+<% end %>

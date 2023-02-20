@@ -23,6 +23,14 @@ class UsersController < ApplicationController
   def show
   end
 
+  def favorites
+    @user = User.find(current_user.id)
+    @photos = @user.photos
+
+    favorites = Favorite.where(user_id: current_user.id).pluck(:photo_id)
+    @favorite_list = Photo.find(favorites)
+  end
+
   def edit
   end
 
