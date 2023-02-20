@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'sessions#new'
   resources :users do
     get :favorites, on: :collection
   end
