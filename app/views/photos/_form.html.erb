@@ -1,4 +1,15 @@
 <%= form_with(model: @photo, local: true) do |f| %>
+  <% if @photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @photo.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @photo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field mt-4">
     <%= f.label :image %>
     <%= image_tag(@photo.image.url) if @photo.image && @photo.image.url %>

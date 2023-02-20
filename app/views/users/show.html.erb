@@ -3,7 +3,7 @@
 <p><%= image_tag(@user.image.url) if @user.image && @user.image.url %></p>
 
 <% if current_user.id == @user.id %>
-  <%= link_to "画像の登録", edit_user_path, class: "btn btn-primary" %>
+  <%= link_to "画像の登録と編集", edit_user_path, class: "btn btn-primary" %>
 <% end %>
 <p>メールアドレス：　<%= @user.email %></p>
 
